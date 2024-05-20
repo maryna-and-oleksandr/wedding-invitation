@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<html>
+  <style>
+    @font-face {
+      font-family: 'LianaRegular';
+      src: url("fonts/Liana Regular.ttf") format('truetype');
+    }
+    @font-face {
+      font-family: 'Slimamif';
+      src: url("fonts/Slimamif.ttf") format('truetype');
+    }
+    html {
+      margin: 0;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+    body {
+      margin: 0;
+      text-align: center;
+      font-weight: normal;
+      background-image: url(files/paper.png);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .frame-top {
+      display: flex;
+      position: relative;
+      width: 120%;
+      margin-top: -20%;
+    }
+    .frame-bottom {
+      display: flex;
+      position: relative;
+      width: 120%;
+      margin-bottom: -20%;
+      transform: scaleY(-1);
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border: 1px solid black;
+      padding: 15px;
+      width: 400px;
+      background-image: url(files/calendar.png);
+      background-size: 25%;
+      border-radius: 1rem;
+    }
+    .calendar-week {
+      grid-column-start: auto;
+      color: #a62137;
+      font-family: Slimamif;
+      font-weight: normal;
+      font-size: 40px;
+    }
+    .calendar-date {
+      grid-column-start: auto;
+      font-family: Slimamif;
+      font-weight: normal;
+      font-size: 40px;
+    }
+    .calendar-fade {
+      grid-column-start: auto;
+      color: #7c7171;
+      font-family: Slimamif;
+      font-weight: normal;
+      font-size: 40px;
+    }
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .palette-color {
+      grid-column-start: auto;
+      height: 200px;
+      row-gap: 0px;
+    }
+    .separator {
+      width: 70vw;
+      margin: 100px 0;
+    }
+    .title-text {
+      font-family: LianaRegular;
+      font-weight: normal;
+      font-size: 76px;
+      color: #c83d54;
+    }
+    .content-text {
+      font-family: Slimamif;
+      font-weight: normal;
+      font-size: 40px;
+    }
+    .rings {
+      width: 400px;
+      margin-top: 100px;
+    }
+    .submit-button {
+      color: black;
+      background-color: rgba(244, 154, 154, 0.125);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: .5rem;
+      font-family: Slimamif;
+      font-weight: normal;
+      font-size: 32px;
+      justify-content: center;
+      transition: all 250ms;
+      overflow: hidden;
+    }
+    .submit-button:hover,
+    .submit-button:focus {
+      border-color: rgba(0, 0, 0, 0.15);
+      background-color: rgba(244, 154, 154, 0.25);
+    }
+    .submit-button:active {
+      border-color: rgba(0, 0, 0, 0.15);
+      background-color: rgba(244, 154, 154, 0.5);
+    }
+    h1, h2, h3, h4, h5, h6 { 
+      font-weight: normal;
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        60% {
+            transform: scale(1.25);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+  </style>
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jule 21, 2024 11:30:00").getTime();
+    
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("timer").innerHTML = days + " днів " + hours + " годин " + minutes + " хвилин " + seconds + " секунд ";
+      // if (distance < 0) {
+        // clearInterval(x);
+        // document.getElementById("timer").innerHTML = "EXPIRED";
+      // }
+    }, 1000);
+    </script>
+  <body>
+    <img class="frame-top" src="files/header.png">
+    <div style="display: flex; flex-direction: column; align-items: center; width: 80vw;">
+      <p style="font-family: LianaRegular; font-size: 174px;">Марина<br>та<br>Олександр</p>
+      <div class="title-text">До весiлля залишилося:</div>
+      <p class="content-text" id="timer">Jule 21, 2024 11:30:00</p>
+      <img class="rings" src="files/4.png">
+      <img class="separator" src="files/8.png">
+      <div class="title-text">21 липня 2024 року</div>
+      <p class="content-text">В день створення нашої сім'ї, ми<br>запрошуємо Вас розділити з нами радість<br>цього особливого дня в нашому житті.<br>Будемо раді бачити Вас на нашому весіллі,<br>щоб разом створити незабутні спогади.</p>
+      <div class="calendar">
+        <div class="calendar-week">ПН</div>
+        <div class="calendar-week">ВТ</div>
+        <div class="calendar-week">СР</div>
+        <div class="calendar-week">ЧТ</div>
+        <div class="calendar-week">ПТ</div>
+        <div class="calendar-week">СБ</div>
+        <div class="calendar-week">НД</div>
+        <div class="calendar-date">1</div>
+        <div class="calendar-date">2</div>
+        <div class="calendar-date">3</div>
+        <div class="calendar-date">4</div>
+        <div class="calendar-date">5</div>
+        <div class="calendar-date">6</div>
+        <div class="calendar-date">7</div>
+        <div class="calendar-date">8</div>
+        <div class="calendar-date">9</div>
+        <div class="calendar-date">10</div>
+        <div class="calendar-date">11</div>
+        <div class="calendar-date">12</div>
+        <div class="calendar-date">13</div>
+        <div class="calendar-date">14</div>
+        <div class="calendar-date">15</div>
+        <div class="calendar-date">16</div>
+        <div class="calendar-date">17</div>
+        <div class="calendar-date">18</div>
+        <div class="calendar-date">19</div>
+        <div class="calendar-date">20</div>
+        <div class="calendar-date" style="display: flex; justify-content: center; align-items: center;">
+          <span>21</span>
+          <img src="files/heart.png" style="width: 2em; position: absolute; animation: pulse 2s infinite;">
+        </div>
+        <div class="calendar-date">22</div>
+        <div class="calendar-date">23</div>
+        <div class="calendar-date">24</div>
+        <div class="calendar-date">25</div>
+        <div class="calendar-date">26</div>
+        <div class="calendar-date">27</div>
+        <div class="calendar-date">28</div>
+        <div class="calendar-date">29</div>
+        <div class="calendar-date">30</div>
+        <div class="calendar-date">31</div>
+        <div class="calendar-fade">1</div>
+        <div class="calendar-fade">2</div>
+        <div class="calendar-fade">3</div>
+        <div class="calendar-fade">4</div>
+      </div>
+      <img class="separator" src="files/8.png">
+      <div class="title-text">Мiсце проведення</div>
+      <p class="content-text">Готельно-оздоровчий комплекс “Green Zone”</p>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13147.931744808679!2d25.803730612240795!3d51.36506065364586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47261372191117ff%3A0xde43c8f4eba7c24b!2z0JPQvtGC0LXQu9GM0L3Qvi3QvtC30LTQvtGA0L7QstGH0LjQuSDQutC-0LzQv9C70LXQutGBICJHcmVlbiBab25lIg!5e0!3m2!1suk!2sua!4v1715858406225!5m2!1suk!2sua"
+        width=600
+        height=450
+        style="border:1;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      <img class="separator" src="files/8.png">
+
+      <div class="title-text">План заходу</div>
+      <div style="display: flex; flex-direction: column; width: 80vw;">
+        <div style="display: flex; justify-content: center; margin-top: 100px;">
+          <img src="files/16.png" style="width: 200px; margin-right: 5%;">
+          <div>
+            <div style="font-family: LianaRegular; font-size: 48px;">11:30 - Зустрiч</div>
+            <div style="font-size: 32px; font-family: Slimamif;">Зустріч і знайомство гостей,<br>Благословення наречених батьками</div>
+            <p style="font-family: Slimamif;">м-н. Перемоги 50, Вараш</p>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 100px;">
+          <div>
+            <div style="font-family: LianaRegular; font-size: 48px;">12:00 - Вiнчання</div>
+            <div style="font-size: 32px; font-family: Slimamif;">Господь своєю присутністю<br>з'єднає наші душі в єдине ціле</div>
+            <p style="font-family: Slimamif;">Свято-Софіївська парафія,<br>м-н. Перемоги 51, Вараш</p>
+          </div>
+          <img src="files/17.png" style="width: 200px; margin-left: 5%;">
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 100px;">
+          <img src="files/18.png" style="width: 200px; margin-right: 5%;">
+          <div>
+            <div style="font-family: LianaRegular; font-size: 48px;">15:00 - Святкування</div>
+            <div style="font-size: 32px; font-family: Slimamif;">Радісно проведемо час та створимо неймовірні<br>спогади у чудовій атмосфері ресторану</div>
+            <p style="font-family: Slimamif;">вул. Центральна 38, Колодії</p>
+          </div>
+        </div>
+      </div>
+      <img class="separator" src="files/8.png">
+      <div class="title-text">Дрес-код</div>
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-evenly;">
+        <p class="content-text">Для нас важливіша Ваша присутність,<br>але нам буде дуже приємно, якщо Ви<br>підтримаєте кольорову палітру нашого весілля.</p>
+        <div class="palette">
+          <img class="palette-color" src="files/9.png" alt="">
+          <img class="palette-color" src="files/10.png" alt="">
+          <img class="palette-color" src="files/11.png" alt="">
+          <img class="palette-color" src="files/12.png" alt="">
+          <img class="palette-color" src="files/13.png" alt="">
+          <img class="palette-color" src="files/14.png" alt="">
+        </div>
+      </div>
+      <img class="separator" src="files/8.png">
+      <div class="title-text">Деталi</div>
+      <p class="content-text">Щоб продовжити красу цього свята,<br>ми будемо вдячні за квіти в горщиках,<br>які надовго нагадуватимуть нам про<br>Ваше тепле привітання.</p>
+      <img src="files/Flowers.png" style="width: 200px;">
+      <p class="content-text">Якщо у Вас виникнуть питання,<br>Ви можете з нами зв'язатися.</p>
+      <div style="font-family: LianaRegular; font-size: 62px;">Олександр</div>
+      <div style="margin: 5%; display: flex; width: fit-content; align-self: center; background-image: url(files/calendar.png); border: inset 1px transparent black; border-radius: 0.5rem;">
+        <form action="tel:+380960019829">
+          <button type="submit" class="submit-button" style="padding: 10px 20px; width: fit-content;" value="+380 (96) 001 98 29">+380 (96) 001 98 29</button>
+        </form>
+      </div>
+      <img class="separator" src="files/8.png">
+      <div class="title-text">Анкета</div>
+      <p class="content-text">Просимо Вас заповнити анкету<br>до 21 червня 2024 р.</p>
+      <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScMz5ktDbDwJlfsc8mBnPzyuo-zjRKSKfE9861AGFWxotC04w/formResponse" method="post">
+        <div style="display: flex; flex-direction: column; text-align: left;">
+          <div class="content-text" placeholder="Ваше ім'я та прізвище">Ваше ім'я та прізвище</div>
+          <input type="text" class="content-text" required name="entry.1436827771" style="padding: 10px; margin: 5% 0; border: 1px solid black;">
+          <div class="content-text" style="margin-bottom: 5%;">Плануєте відвідати весілля?</div>
+          <div style="display: flex; align-items: center">
+            <input type="radio" id="choise.yes" style="transform: scale(1.5); margin-right: 15px;" name="entry.1495708168" value="Так" placeholder="Плануєте відвідати весілля?" checked/>
+            <label for="choise.yes" class="content-text">Так, з радістю!</label>
+          </div>
+          <div style="display: flex; align-items: center">
+            <input type="radio" id="choise.no" style="transform: scale(1.5); margin-right: 15px;" name="entry.1495708168" value="Ні" placeholder="Плануєте відвідати весілля?" />
+            <label for="choise.no" class="content-text">На жаль, я не зможу</label>
+          </div>
+          <div style="margin: 5%; display: flex; width: fit-content; align-self: center; background-image: url(files/calendar.png); border: inset 1px transparent black; border-radius: 0.5rem;">
+            <button type="submit" class="submit-button" style="padding: 10px 20px; width: fit-content;">Відправити</button>
+          </div>
+        </div>
+      </form>
+      <img class="separator" src="files/8.png">
+      <div class="title-text">До зустрiчi!</div>
+      <p class="content-text">"Води великі не зможуть згасити кохання, ані ріки його не заллють..." (Пісн.8:7)</p>
+    </div>
+    <img class="frame-bottom" src="files/header.png">
+  </body>
+</html>
